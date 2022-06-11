@@ -2,7 +2,7 @@ import { useContext, useEffect, useMemo, useRef, useState } from "react"
 import axios, { Method } from "axios"
 import { AxiosContext } from "../contexts/AxiosContext";
 
-export const useAxios = <T = any>(url: string, method: Method | string, payload?: any) => {
+export const useAxios = <T = any>(url: string, method: Method, payload?: any, deps?: any) => {
   const [data, setData] = useState<null | T>(null)
   const [error, setError] = useState("")
   const [loaded, setLoaded] = useState(false)
@@ -35,7 +35,7 @@ export const useAxios = <T = any>(url: string, method: Method | string, payload?
         setLoaded(true)
       }
     })();
-  }, [])
+  }, [deps])
 
   return { cancel, data, error, loaded }
 }

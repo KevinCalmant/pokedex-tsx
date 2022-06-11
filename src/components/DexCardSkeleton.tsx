@@ -1,14 +1,15 @@
-import React from 'react';
-import DexCardWrapper from "../assets/wrappers/DexCard";
+import React from 'react'
+import DexCardWrapper from '../assets/wrappers/DexCard'
 
 const DexCardSkeleton = () => {
   return (
       <DexCardWrapper
-          className="animate-pulse max-w-sm rounded-3xl overflow-hidden shadow-lg flex flex-row p-5 opacity-100">
-        <div className="pokeball" />
-        <div
-            className="pokemon rounded-full bg-info bg-pokemon w-1/4"
-        />
+          className="animate-pulse rounded-3xl overflow-hidden shadow-lg flex flex-row p-5 opacity-25">
+        <div className="pokemon-container">
+          <div
+              className="pokemon bg-info pokeball rounded-full bg-pokemon"
+          />
+        </div>
         <div className="flex flex-col justify-start flex-1 space-y-6 pl-5">
           <div className="h-5 w-9/12 bg-info rounded"></div>
           <div className="h-8 w-9/12 bg-info rounded"></div>
@@ -19,7 +20,7 @@ const DexCardSkeleton = () => {
           </div>
         </div>
       </DexCardWrapper>
-  );
-};
+  )
+}
 
-export default DexCardSkeleton;
+export default DexCardSkeleton

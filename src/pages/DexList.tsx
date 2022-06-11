@@ -1,31 +1,49 @@
-import React from 'react'
-import { useAxios } from "../hooks/useAxios";
-import { PokeApiResponse } from "../models/PokeApiResponse";
-import { MemoizedPokeWait } from "../components/PokeWait";
-import DexListWrapper from "../assets/wrappers/DexList";
+import React, { useEffect, useState } from 'react'
+import { useAxios } from '../hooks/useAxios'
+import { PokeApiResponse } from '../models/PokeApiResponse'
+import { MemoizedPokeWait } from '../components/PokeWait'
+import DexListWrapper from '../assets/wrappers/DexList'
+import RegionNavigator from '../components/RegionNavigator'
+import RegionContext from "../contexts/RegionContext";
+import { Region, regionData, RegionInfo } from "../models/RegionInfo";
 
-const DexCard = React.lazy(() => import("../components/DexCard"))
+const DexCard = React.lazy(() => import('../components/DexCard'))
 
 const DexList = () => {
-  const {data, loaded} = useAxios<PokeApiResponse>(
-      "/pokemon/?limit=151",
-      "GET",
+  const [region, setRegion] = useState<Region>('kanto');
+
+  let {data, loaded} = useAxios<PokeApiResponse>(
+      `/pokemon/?offset=${regionData[region].firstPokemonNum}&limit=${regionData[region].numberOfPokemon}`,
+      'GET',
+      null,
+      region
   )
 
-  return (
-      <DexListWrapper className="flex flex-col justify-center gap-5 w-full">
-        <h2 className="m-auto font-bold">Click the cards to see pokemon details!</h2>
-        {
-          loaded ?
-              <div className="flex flex-row gap-5 flex-wrap m-auto w-7/12 justify-center">
-                {data?.results.map(pokemon =>
-                    <DexCard url={pokemon.url} key={pokemon.name}/>
-                )}
-              </div>
-              : <MemoizedPokeWait message="Pokedex is starting!"/>
-        }
+  useEffect(() => {
+    loaded = false;
+  }, [region]);
 
-      </DexListWrapper>
+
+  return (
+      <RegionContext.Provider value={{region, setRegion}}>
+        <DexListWrapper className="flex flex-col justify-center gap-5 w-full">
+          {
+            loaded ?
+                (
+                    <>
+                      <RegionNavigator/>
+                      <h2 className="m-auto font-bold">Click the cards to see pokemon details!</h2>
+                      <div className="flex flex-row gap-5 flex-wrap m-auto w-10/12 md:w-9/12 justify-center">
+                        {data?.results.map(pokemon =>
+                            <DexCard url={pokemon.url} key={pokemon.name}/>
+                        )}
+                      </div>
+                    </>
+                )
+                : <MemoizedPokeWait message="Pokedex is starting!"/>
+          }
+        </DexListWrapper>
+      </RegionContext.Provider>
   )
 }
 

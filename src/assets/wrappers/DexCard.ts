@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const DexCardWrapper = styled.div`
   background-color: var(--color-primary-2);
-  width: 390px;
+  width: 450px;
   min-height: 140px;
   cursor: pointer;
   color: var(--color-primary-4);
