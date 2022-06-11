@@ -28,10 +28,17 @@ const DexCard = ({url}: { url: string }) => {
                   className="rounded-full bg-info bg-pokemon w-1/4"
                   src={data.sprites.front_default}
                   alt="pokefion"/>
-              <div className="flex-1 space-y-6 pl-5 flex justify-center">
-                <h1 className="font-extrabold">
+              <div className="flex flex-col justify-start flex-1 space-y-6 pl-5 text-center">
+                <h1 className="h-5 w-9/12  font-extrabold">
                   {data.name}
                 </h1>
+                <div className="h-5 w-9/12">
+                  {
+                    data.types.map((type, index) =>
+                        <>{index === data.types.length - 1 ? type.type.name : type.type.name + ' / '}</>
+                    )
+                  }
+                </div>
               </div>
               <div className="flex flex-col justify-center">
                 <div className="bg-info rounded-2xl min-w-max text-center">
