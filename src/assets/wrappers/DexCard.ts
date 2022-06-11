@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const DexCardWrapper = styled.aside`
+const DexCardWrapper = styled.div`
   background-color: var(--color-primary-2);
   width: 370px;
   min-height: 129px;
