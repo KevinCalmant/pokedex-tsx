@@ -33,7 +33,7 @@ const DexList = () => {
                     <>
                       <RegionNavigator/>
                       <h2 className="m-auto font-bold">Click the cards to see pokemon details!</h2>
-                      <div className="flex flex-row gap-5 flex-wrap m-auto w-10/12 md:w-9/12 justify-center">
+                      <div className="flex flex-row gap-5 flex-wrap m-auto w-10/12 md:w-9/12 justify-center mt-5 mb-5">
                         {data?.results.map(pokemon =>
                             <DexCard url={pokemon.url} key={pokemon.name}/>
                         )}
