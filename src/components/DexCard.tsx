@@ -16,7 +16,7 @@ const DexCard = ({url}: { url: string }) => {
             (<DexCardWrapper
                 className="max-w-sm rounded-3xl overflow-hidden shadow-lg flex flex-row p-5 duration-100 hover:border-2">
               <img
-                  className="rounded-full bg-pokemon w-1/4"
+                  className="rounded-full bg-info bg-pokemon w-1/4"
                   src={data.sprites.front_default}
                   alt="pokefion"/>
               <div className="flex-1 space-y-6 pl-5 flex justify-center">
@@ -25,7 +25,7 @@ const DexCard = ({url}: { url: string }) => {
                 </h1>
               </div>
               <div className="flex flex-col justify-center">
-                <div className="bg-pokemon rounded-2xl min-w-max text-center">
+                <div className="bg-info rounded-2xl min-w-max text-center">
                   <h3 className="pokemon-number font-extrabold p-2"># {data.id}</h3>
                 </div>
               </div>
