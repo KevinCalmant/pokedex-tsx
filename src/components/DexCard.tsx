@@ -4,6 +4,8 @@ import { useAxios } from "../hooks/useAxios";
 import { Pokemon } from "../models/Pokemon";
 import DexCardSkeleton from "./DexCardSkeleton";
 import { useNavigate } from "react-router-dom";
+import { MemoizedPokeType } from "./PokeType";
+import Pokeball from '../assets/images/pokeball.svg';
 
 const DexCard = ({url}: { url: string }) => {
   const navigate = useNavigate();
@@ -24,18 +26,21 @@ const DexCard = ({url}: { url: string }) => {
                 className="max-w-sm rounded-3xl overflow-hidden shadow-lg flex flex-row p-5 duration-100 hover:border-2"
                 onClick={() => handleCardClick(data.id)}
               >
-              <img
-                  className="rounded-full bg-info bg-pokemon w-1/4"
-                  src={data.sprites.front_default}
-                  alt="pokefion"/>
-              <div className="flex flex-col justify-start flex-1 space-y-6 pl-5 text-center">
-                <h1 className="h-5 w-9/12  font-extrabold">
+              <div className="pokemon-container">
+                <img src={Pokeball} className="pokeball" />
+                <img
+                    className="pokemon rounded-full bg-pokemonw-1/4"
+                    src={data.sprites.front_default}
+                    alt="pokefion"/>
+              </div>
+              <div className="flex flex-col justify-start flex-1 space-y-6 pl-5">
+                <h1 className="pokemon-name h-5 w-9/12 font-extrabold">
                   {data.name}
                 </h1>
-                <div className="h-5 w-9/12">
+                <div className="h-8 w-full flex flex-row gap-1">
                   {
                     data.types.map((type, index) =>
-                        <>{index === data.types.length - 1 ? type.type.name : type.type.name + ' / '}</>
+                        <MemoizedPokeType type={type.type.name} />
                     )
                   }
                 </div>

@@ -17,7 +17,7 @@ const DexList = () => {
         <h2 className="m-auto font-bold">Click the cards to see pokemon details!</h2>
         {
           loaded ?
-              <div className="flex flex-row gap-5 flex-wrap m-auto w-11/12">
+              <div className="flex flex-row gap-5 flex-wrap m-auto w-7/12 justify-center">
                 {data?.results.map(pokemon =>
                     <DexCard url={pokemon.url} key={pokemon.name}/>
                 )}
