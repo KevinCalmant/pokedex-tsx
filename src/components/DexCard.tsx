@@ -1,20 +1,29 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DexCardWrapper from "../assets/wrappers/DexCard";
 import { useAxios } from "../hooks/useAxios";
 import { Pokemon } from "../models/Pokemon";
 import DexCardSkeleton from "./DexCardSkeleton";
+import { useNavigate } from "react-router-dom";
 
 const DexCard = ({url}: { url: string }) => {
+  const navigate = useNavigate();
+
   const {data, loaded} = useAxios<Pokemon>(
       url,
       "GET",
   )
 
+  const handleCardClick = (pokemonId: number) => {
+    navigate(`${pokemonId}/detail`);
+  }
+
   return (
       <>
         {data != null && loaded ?
             (<DexCardWrapper
-                className="max-w-sm rounded-3xl overflow-hidden shadow-lg flex flex-row p-5 duration-100 hover:border-2">
+                className="max-w-sm rounded-3xl overflow-hidden shadow-lg flex flex-row p-5 duration-100 hover:border-2"
+                onClick={() => handleCardClick(data.id)}
+              >
               <img
                   className="rounded-full bg-info bg-pokemon w-1/4"
                   src={data.sprites.front_default}
