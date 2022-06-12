@@ -6,4 +6,4 @@ const DexListWrapper = styled.div`
   }
 `
 
-export default DexListWrapper;
+export default DexListWrapper

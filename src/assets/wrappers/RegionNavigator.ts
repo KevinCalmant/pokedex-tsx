@@ -11,4 +11,4 @@ const RegionNavigatorWrapper = styled.div`
   }
 `
 
-export default RegionNavigatorWrapper;
+export default RegionNavigatorWrapper

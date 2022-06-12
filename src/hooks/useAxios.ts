@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useRef, useState } from "react"
 import axios, { Method } from "axios"
-import { AxiosContext } from "../contexts/AxiosContext";
+import { AxiosContext } from "../contexts/AxiosContext"
 
 export const useAxios = <T = any>(url: string, method: Method, payload?: any, deps?: any) => {
   const [data, setData] = useState<null | T>(null)
@@ -16,7 +16,7 @@ export const useAxios = <T = any>(url: string, method: Method, payload?: any, de
   const controllerRef = useRef(new AbortController())
 
   const cancel = () => {
-    controllerRef.current.abort();
+    controllerRef.current.abort()
   }
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export const useAxios = <T = any>(url: string, method: Method, payload?: any, de
       } finally {
         setLoaded(true)
       }
-    })();
+    })()
   }, [deps])
 
   return { cancel, data, error, loaded }

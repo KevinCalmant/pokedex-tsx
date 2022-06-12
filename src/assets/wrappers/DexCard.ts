@@ -44,4 +44,4 @@ const DexCardWrapper = styled.div`
   }
 `
 
-export default DexCardWrapper;
+export default DexCardWrapper

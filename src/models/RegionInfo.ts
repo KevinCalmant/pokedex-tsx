@@ -1,6 +1,7 @@
 export interface RegionInfo {
   firstPokemonNum: number
   numberOfPokemon: number
+  profName: string
 }
 
 export type Region = 'kanto' | 'johto' | 'hoenn' | 'sinnoh' | 'unova' | 'kalos' | 'alola' | 'galar'
@@ -8,34 +9,42 @@ export type Region = 'kanto' | 'johto' | 'hoenn' | 'sinnoh' | 'unova' | 'kalos' 
 export const regionData: Record<Region, RegionInfo> = {
   ['kanto']: {
     firstPokemonNum: 0,
-    numberOfPokemon: 151
+    numberOfPokemon: 151,
+    profName: 'Oak',
   },
   ['johto']: {
     firstPokemonNum: 151,
-    numberOfPokemon: 100
+    numberOfPokemon: 100,
+    profName: 'Elm',
   },
   ['hoenn']: {
     firstPokemonNum: 251,
-    numberOfPokemon: 135
+    numberOfPokemon: 135,
+    profName: 'Birch',
   },
   ['sinnoh']: {
     firstPokemonNum: 386,
-    numberOfPokemon: 108
+    numberOfPokemon: 108,
+    profName: 'Rowan',
   },
   ['unova']: {
     firstPokemonNum: 494,
-    numberOfPokemon: 155
+    numberOfPokemon: 155,
+    profName: 'Juniper',
   },
   ['kalos']: {
     firstPokemonNum: 649,
-    numberOfPokemon: 72
+    numberOfPokemon: 72,
+    profName: 'Sycamore',
   },
   ['alola']: {
     firstPokemonNum: 721,
-    numberOfPokemon: 88
+    numberOfPokemon: 88,
+    profName: 'Kukui',
   },
   ['galar']: {
     firstPokemonNum: 809,
-    numberOfPokemon: 81
+    numberOfPokemon: 81,
+    profName: 'Magnolia',
   },
 }

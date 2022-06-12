@@ -1,5 +1,5 @@
-import { PokemonSprites } from "./PokemonSprites";
-import { PokemonType } from "./PokemonType";
+import { PokemonSprites } from "./PokemonSprites"
+import { PokemonType } from "./PokemonType"
 
 export interface Pokemon {
   id: number

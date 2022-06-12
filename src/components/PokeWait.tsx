@@ -1,6 +1,6 @@
 import React from 'react'
 import WaitingPokeball from '../assets/images/waiting-pokeball.gif'
-import PokeWaitWrapper from '../assets/wrappers/PokeWait'
+import PokeWaitWrapper from "../assets/wrappers/PokeWait"
 
 const PokeWait = ({ message }: { message: string }) => {
 	return (
