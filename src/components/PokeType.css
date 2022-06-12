@@ -1,9 +1,9 @@
 .type-container {
-    font-size: .75em;
-    padding: 0.5em;
+    font-size: .85em;
+    padding: 0.25em;
     text-transform: capitalize;
     color: white;
-    width: 60px;
+    width: 80px;
     font-weight: bold;
     text-align: center;
 }

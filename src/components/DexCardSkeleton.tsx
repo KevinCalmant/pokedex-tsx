@@ -12,7 +12,7 @@ const DexCardSkeleton = () => {
 			</div>
 			<div className="flex flex-col justify-start flex-1 space-y-6 pl-5">
 				<div className="h-5 w-9/12 bg-info rounded"></div>
-				<div className="h-8 w-9/12 bg-info rounded"></div>
+				<div className="h-11 pt-4 w-9/12 bg-info rounded"></div>
 			</div>
 			<div className="flex flex-col justify-center">
 				<div className="bg-info rounded-2xl min-w-max text-center">

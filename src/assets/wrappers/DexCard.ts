@@ -9,6 +9,7 @@ const DexCardWrapper = styled.div`
   
   .pokemon-name {
     text-transform: capitalize;  
+    font-size: 1em;
   }
   
   .bg-info {
