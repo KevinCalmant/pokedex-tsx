@@ -1,18 +1,18 @@
-import React from 'react'
+import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
-import { AxiosInstanceProvider } from './contexts/AxiosContext'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-	<React.StrictMode>
-		<BrowserRouter>
-			<AxiosInstanceProvider config={{baseURL: 'https://pokeapi.co/api/v2'}}
-				requestInterceptors={[]}
-				responseInterceptors={[]}>
-				<App/>
-			</AxiosInstanceProvider>
-		</BrowserRouter>
-	</React.StrictMode>
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </QueryClientProvider>
+  </StrictMode>
 )

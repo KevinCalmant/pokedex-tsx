@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import RegionNavigatorWrapper from '../assets/wrappers/RegionNavigator'
 import { Region, regionData } from '../models/RegionInfo'
 import RegionContext from '../contexts/RegionContext'
@@ -15,7 +15,7 @@ const RegionNavigator = () => {
 	}
 
 	return (
-		<RegionNavigatorWrapper className="flex flex-row justify-center">
+		<RegionNavigatorWrapper className="flex flex-row justify-center w-full">
 			<nav className="w-6/12 rounded-2xl flex flex-col justify-center font-medium">
 				<ul className="flex flex-row justify-around p-4 font-extrabold">
 					{

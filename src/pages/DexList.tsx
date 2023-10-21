@@ -1,33 +1,39 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useAxios } from '../hooks/useAxios'
+import { useState, useContext, lazy } from 'react'
 import { PokeApiResponse } from '../models/PokeApiResponse'
 import { MemoizedPokeWait } from '../components/PokeWait'
 import DexListWrapper from '../assets/wrappers/DexList'
 import RegionNavigator from '../components/RegionNavigator'
 import RegionContext from '../contexts/RegionContext'
 import { Region, regionData } from '../models/RegionInfo'
-
-const DexCard = React.lazy(() => import('../components/DexCard'))
+import { Queries } from '../queries/queries'
+import { getPokemons } from '../queries/pokemons-queries'
+import { useQuery } from 'react-query'
+import DexCard from '../components/DexCard'
 
 const DexList = () => {
+  const [firstLoad, setFirstLoad] = useState(true)
+
   const { region } = useContext(RegionContext)
 
-  let { data, loaded } = useAxios<PokeApiResponse>(
-    `/pokemon/?offset=${regionData[region as Region].firstPokemonNum}&limit=${
-      regionData[region as Region].numberOfPokemon
-    }`,
-    'GET',
-    null,
-    region
+  const { data } = useQuery<PokeApiResponse>(
+    [Queries.GET_POKEMONS, regionData[region as Region]],
+    {
+      queryFn: () =>
+        getPokemons(
+          regionData[region as Region].numberOfPokemon,
+          regionData[region as Region].firstPokemonNum
+        ),
+      onSuccess: (data) => {
+        if (firstLoad) {
+          setFirstLoad(false)
+        }
+      },
+    }
   )
 
-  useEffect(() => {
-    loaded = false
-  }, [region])
-
   return (
-    <DexListWrapper className="flex flex-col justify-center gap-5 w-full">
-      {loaded ? (
+    <DexListWrapper className="flex flex-col justify-center items-center gap-5 w-full">
+      {!firstLoad ? (
         <>
           <RegionNavigator />
           <h2 className="m-auto font-bold">
@@ -35,7 +41,9 @@ const DexList = () => {
           </h2>
           <div className="flex flex-row gap-5 flex-wrap m-auto w-10/12 md:w-9/12 justify-center mt-5 mb-5">
             {data?.results.map((pokemon) => (
-              <DexCard url={pokemon.url} key={pokemon.name} />
+              <div key={pokemon.name} className="col-span-1">
+                <DexCard url={pokemon.url} />
+              </div>
             ))}
           </div>
         </>

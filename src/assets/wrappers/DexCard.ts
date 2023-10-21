@@ -18,6 +18,8 @@ const DexCardWrapper = styled.div`
   
   .pokemon-container {
     position: relative;
+    width: 96px;
+    height: 96px;
   }
   
   .pokeball {

@@ -1,5 +1,6 @@
-import React from 'react'
 import './PokeType.css'
+
+import {memo} from 'react'
 
 const PokeType = ({type}: { type: string }) => {
 	return (
@@ -9,4 +10,4 @@ const PokeType = ({type}: { type: string }) => {
 	)
 }
 
-export const MemoizedPokeType = React.memo(PokeType)
+export const MemoizedPokeType = memo(PokeType)

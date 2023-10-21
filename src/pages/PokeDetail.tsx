@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { MemoizedPokeWait } from '../components/PokeWait'
 import RegionContext from '../contexts/RegionContext'
 import { Region, regionData } from '../models/RegionInfo'
